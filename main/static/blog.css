@@ -297,4 +297,10 @@ font-size: 20px;
     right: -21px;
     color: inherit;
   }
-  
+  .inputbox {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #1D3557;
+    border-radius: 4px;
+}

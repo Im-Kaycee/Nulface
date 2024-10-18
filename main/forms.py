@@ -16,5 +16,5 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs= {'class':'inputbox'}),
             'category':forms.Select(choices=choice_list,attrs= {'class':'inputbox'}),
-            'content': CKEditorWidget(attrs={'class': 'inputbox'}),
+            'content': CKEditorWidget(),
             }
