@@ -1,0 +1,51 @@
+{% extends 'blog.html' %}
+{% block title %}Edit Post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  {% if user.id == post_details.author.id %}
+  <section class="contact">
+    <h1>Edit Blog Post</h1>
+    <div class="container">
+       <div class="contactform">
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="inputbox">
+                {{ form.title }}
+                <span>Title</span>
+            </div>
+            <div class="inputbox">
+                {{ form.category }}
+                <span>Category</span>
+            </div>
+            <div class="inputbox">
+                {{ form.author }}
+                <span>Author</span>
+            </div>
+            <div class="inputbox">
+                {{ form.content }}
+                <span>Type your message...</span>
+            </div>
+
+            <div class="inputbox">
+                <input type="submit" value="Edit">
+            </div>
+        </form>
+       </div>
+    </div>
+    </section>
+    <script> 
+        textarea = document.getElementById('auto-resize');
+        textarea.addEventListener('input', function() {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+        });
+        </script>
+  {% else %}
+  <h1>Login Please</h1>
+  {% endif %}
+{% else %}
+<h1>Login Please</h1>
+
+{% endif %}
+{% endblock %}

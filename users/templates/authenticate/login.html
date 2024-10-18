@@ -1,0 +1,37 @@
+{% extends 'blog.html' %}
+{% block title %}Registration{% endblock %}
+{% block content %}
+
+<section class="contact">
+    <h1>Login</h2>
+    <div class="container">
+       <div class="contactform">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="inputbox">
+                <input type="text" name="username" required="required">
+                <span>login</span>
+            </div>
+            <div class="inputbox">
+                <input type="password" name="password" required="required">
+                <span>Password</span>
+            </div>
+            <div class="inputbox">
+                <input type="submit" name="" value="Login">
+                
+            </div>
+        </form>
+       </div>
+        </div>
+</section>
+<script> textarea = document.getElementById('auto-resize');
+
+textarea.addEventListener('input', function() {
+  // Reset the height to auto to calculate the new height
+  textarea.style.height = 'auto';
+  // Set the height equal to the scrollHeight to grow the textarea
+  textarea.style.height = textarea.scrollHeight + 'px';
+});
+</script>
+
+{% endblock %}
