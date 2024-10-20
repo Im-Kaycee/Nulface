@@ -14,4 +14,6 @@ urlpatterns = [
     path('post/edit/<int:pk>/remove', delete_post.as_view(), name='delete_post'),
     path('add_category/', add_category.as_view(), name='add_category'),
     path('all_posts/', views.all_posts, name='all_posts'),
+    path('cyber_posts/', views.cyber_posts, name='cyber_posts'),
+
 ]

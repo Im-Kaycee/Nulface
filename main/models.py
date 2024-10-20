@@ -16,9 +16,10 @@ class Posts(models.Model):
     title = models.CharField(max_length=255)  # For the blog post title
     #content = models.TextField() #content
     content = RichTextField(blank=True, null=True)
-    date_posted = models.DateField(default=datetime.date.today) #date posted
+    date_posted = models.DateTimeField(default=datetime.datetime.now)  # This will now include both date and time
     category = models.CharField(max_length=255)#category
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    header_image = models.ImageField(null=True,blank=True, upload_to="images/")
 
 
     def __str__(self):

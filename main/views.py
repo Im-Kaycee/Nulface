@@ -14,6 +14,12 @@ def all_posts(request):
         'all_posts': all_posts,
     }
     return render(request, 'All_posts.html',context)
+def cyber_posts(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'cyber.html',context)
 #def blog(request):
     #return render(request, 'blog.html', {})
 #def upload(request):

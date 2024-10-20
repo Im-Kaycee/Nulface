@@ -11,6 +11,9 @@
    {% endif %}
 {% endif %}
 <div class="blog-post" style="text-align: center;">
+   {% if post_details.header_image %}
+     <img src="{{post_details.header_image.url}}" style="width: 80%;margin-top: 30px; height: 500px;">
+   {% endif %}
     <h1>{{post_details.title}}</h1>
     <p>{{post_details.content|safe}}</p>
 </div>

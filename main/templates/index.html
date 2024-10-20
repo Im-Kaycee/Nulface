@@ -25,7 +25,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/profile">Profile</a></li>
+            <li><a href="/">Profile</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
             <li><a href="/">Home</a></li>
@@ -67,7 +67,11 @@
               <div class="card-details">
                 <p>Read about my opinions and experiences
                   New posts every Friday</p>
-                  <a href="/blog" class="btn">Read More</a>
+                  {% if user.is_authenticated %}
+                    <a href="/blog" class="btn">Read More</a>
+                  {% else %}
+                    <a href="/" class="btn">Login Please</a>
+                  {% endif %}
               </div>
               
             </div>
