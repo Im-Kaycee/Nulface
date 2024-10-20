@@ -9,27 +9,32 @@
 </head>
 <body class="index_body">
   {% block content %}
-    <nav class="navbar">
-        <a href="/">
-            <img src="{% static 'images/logo1-white.svg' %}" alt="Brand Logo" class="logo">
-        </a>
-        <ul class="nav-links">
-          {% if user.is_authenticated %}
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="{% url 'logout' %}">Logout</a></li>
-          
-         {% else %}
-          <li><a href="/">Home</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="{% url 'login' %}">Login</a></li>
-          <li><a href="{% url 'register' %}">Register</a></li>
-         {% endif %}
-        
-        </ul>
-    </nav>
+  <nav class="navbar">
+    <a href="/">
+        <img src="{% static 'images/logo1-white.svg' %}" alt="Brand Logo" class="logo">
+    </a>
+
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links">
+        {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
     {% if messages %}  
       {% for message in messages %}
          <!-- Success Alert -->
@@ -123,6 +128,9 @@
           alert.style.display = 'none';
       }
   }, 3000);
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
 </script>
 </body>
 </html>

@@ -6,6 +6,7 @@
     min-height: 100vh;
     background-color: #F2F2F2;
 }
+/* Basic Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -16,7 +17,7 @@
 }
 
 .logo {
-    height: 50px; /* Adjust to fit your design */
+    height: 50px;
 }
 
 .nav-links {
@@ -35,6 +36,47 @@
     color: white;
     font-size: 18px;
 }
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 4px 0;
+    border-radius: 2px;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: #1D3557;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Shown when toggled */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon on mobile */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
 .footer {
     margin-top: 20px;
     background-color: #23395d;
@@ -48,6 +90,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
+    flex-wrap: wrap;
 }
 
 .footer-logo img {
