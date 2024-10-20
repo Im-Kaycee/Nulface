@@ -8,7 +8,12 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
-
+def all_posts(request):
+    all_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'all_posts': all_posts,
+    }
+    return render(request, 'All_posts.html',context)
 #def blog(request):
     #return render(request, 'blog.html', {})
 #def upload(request):
@@ -31,6 +36,11 @@ class blogs(ListView):
 
         # Retrieve a different amount of data for the second section
         context['recent_posts'] = Posts.objects.all().order_by('-date_posted')[:2]  # first 2 posts
+        # Retrieve a different amount of data for the third section
+        context['newest_post'] = Posts.objects.all().order_by('-date_posted')[:1]  # first post
+          # Retrieve a different amount of data for the third section
+        context['all_posts'] = Posts.objects.all().order_by('-date_posted')
+
         
         return context
 class post_details(DetailView):
@@ -60,8 +70,9 @@ class add_category(CreateView):
     
 class edit_post(UpdateView):
     model = Posts
+    form_class = PostForm
     template_name = 'edit_post.html'
-    fields =['title','category','content']
+    #fields =['title','category','content']
     context_object_name = 'update'
     def get_context_data(self, **kwargs):
         # Get the default context data

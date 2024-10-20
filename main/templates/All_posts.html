@@ -1,0 +1,21 @@
+{% extends 'blog.html' %}
+{% block title %}Posts{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  
+   {% for post in all_posts %}
+   <div class="card">
+       <div class="card-info">
+           <p class="sn">{{ forloop.counter }}</p>
+           <div class="info">
+               <div class="title"><a href="{% url 'post' post.pk %}" style="text-decoration: none;color: black;">{{post.title}}</a></div>
+               <div class="category-mini">{{post.category}}</div>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+  
+{% endif %}
+
+
+{% endblock %}

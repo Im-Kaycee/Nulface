@@ -80,21 +80,29 @@
                 {% endfor %}
                 <h1>Upload new post</h1>
                 <button style="padding: 8px; background-color: #1D3557;"><a href="{% url 'upload' %}" style="text-decoration: none; color: white; font-weight: 800;">Upload Post</a></button>
+                <h1>View Posts</h1>
+                <button style="padding: 8px; background-color: #1D3557;"><a href="{% url 'all_posts' %}" style="text-decoration: none; color: white; font-weight: 800;">View all Posts</a></button>
             </div>
         </div>
        
         <div class="right">
             <h2>Latest Post</h2>
+            {% for post in newest_post%}
             <div class="post-card" id="latest">
                 <div class="image"></div>
                 <div class="card-content">
-                  <p class="category-mini">Graphics Design</p>
-                  <div class="card-details">
-                    <p class="title"><a href="/post" style="text-decoration: none; color: black;">The Art Of Designing A Brand Logo</a></p>
-                  </div>
+                    <div class="mini-details" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <p class="category-mini">- {{post.category}}</p>
+                        <p class="category-mini">- {{post.author}}</p></div>
                   
+                  <div class="card-details">
+                    <p class="title"><a href="{% url 'post' post.pk %}" style="text-decoration: none;color: black;">{{post.title}}</a></p>
+                    
+                  </div>
+                 
                 </div>
-              </div>
+               </div>
+               {% endfor %}
               <h2>Recent Posts</h2>
               {% for post in recent_posts %}
               <div class="post-card" id="latest">
@@ -106,7 +114,7 @@
                   
                   <div class="card-details">
                     <p class="title"><a href="{% url 'post' post.pk %}" style="text-decoration: none;color: black;">{{post.title}}</a></p>
-                    <p>{{ post.content|slice:":100" }}...</p>  <!-- Show the first 100 characters as a snippet -->
+                   
                   </div>
                  
                 </div>
