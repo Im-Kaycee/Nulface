@@ -15,5 +15,10 @@ urlpatterns = [
     path('add_category/', add_category.as_view(), name='add_category'),
     path('all_posts/', views.all_posts, name='all_posts'),
     path('cyber_posts/', views.cyber_posts, name='cyber_posts'),
+    path('networking/', views.networking, name='networking'),
+    path('UI_UX/', views.UI_UX, name='UI_UX'),
+    path('experience/', views.experience, name='experience'),
+    path('graphics/', views.graphics, name='graphics'),
+    path('programming/', views.programming, name='programming'),
 
 ]

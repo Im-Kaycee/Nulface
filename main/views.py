@@ -21,6 +21,37 @@ def cyber_posts(request):
         'cyber_posts': cyber_posts,
     }
     return render(request, 'cyber.html',context)
+def experience(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'experience.html',context)
+def networking(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'net.html',context)
+def graphics(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'graphics.html',context)
+def programming(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'program.html',context)
+def UI_UX(request):
+    cyber_posts = Posts.objects.all().order_by('-date_posted')
+    context = {
+        'cyber_posts': cyber_posts,
+    }
+    return render(request, 'ui.html',context)
+
 #def blog(request):
     #return render(request, 'blog.html', {})
 #def upload(request):

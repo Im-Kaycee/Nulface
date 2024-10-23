@@ -1,0 +1,26 @@
+{% extends 'blog.html' %}
+{% block title %}Posts{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+   {% for post in cyber_posts %}
+     {% if post.category == 'Graphic Design' %}
+     
+       <div class="card" style="height:80px;">
+       <div class="card-info" >
+           <!--<p class="sn">{{ forloop.counter }}</p>-->
+           <div class="info">
+               <div class="title"><a href="{% url 'post' post.pk %}" style="text-decoration: none;color: black;">{{post.title}}</a></div>
+               <div class="category-mini">{{post.category}}</div>
+               <div class="category-mini">{{post.author}}</div>
+           </div>
+       </div>
+      </div>
+     
+     {% endif %}
+   {% endfor %}
+  </div>
+{% endif %}
+
+
+{% endblock %}

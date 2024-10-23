@@ -27,12 +27,12 @@
             {% if user.is_authenticated %}
                 <li><a href="/">Home</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Contact</a></li>
                 <li><a href="{% url 'user_edit' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="/">Home</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Contact</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'register' %}">Register</a></li>
             {% endif %}
@@ -54,19 +54,22 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <div class="card">
-                    <p><a href="/cyber_posts">Cyber Security</a> </p>
+                    <p><a href="/cyber_posts" style="text-decoration: none; color: black;">Cyber Security</a> </p>
                 </div>
                 <div class="card">
-                    <p>Graphics Design</p>
+                    <p><a href="/graphics" style="text-decoration: none; color: black;" >Graphics Design</a></p>
                 </div>
                 <div class="card">
-                    <p>UI/UX Design</p>
+                    <p><a href="/UI_UX" style="text-decoration: none; color: black;">UI/UX Design</a></p>
                 </div>
                 <div class="card">
-                    <p>Networking</p>
+                    <p><a href="/networking" style="text-decoration: none; color: black;">Networking</a></p>
                 </div>
                 <div class="card">
-                    <p>Experiences</p>
+                    <p><a href="/experience" style="text-decoration: none; color: black;">Experiences</a></p>
+                </div>
+                <div class="card">
+                    <p><a href="/programming" style="text-decoration: none; color: black;">Programming</a></p>
                 </div>
             </div>
             <div class="top-posts">
