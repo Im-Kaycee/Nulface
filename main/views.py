@@ -4,6 +4,7 @@ from .models import Posts
 from .forms import PostForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -66,6 +67,10 @@ class upload(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user  # Set author to logged-in user
         return super().form_valid(form)   
+    def get_success_url(self):
+        # Redirect to the detail page of the post after creation
+        return reverse('post', kwargs={'pk': self.object.pk})
+
 
 class add_category(CreateView):
     model = Posts
@@ -88,6 +93,9 @@ class edit_post(UpdateView):
         context['post_details'] = get_object_or_404(Posts, pk=self.kwargs['pk'])
 
         return context
+    def get_success_url(self):
+        # Redirect to the detail page of the post after creation
+        return reverse('post', kwargs={'pk': self.object.pk})
 
 class delete_post(DeleteView):
     model = Posts

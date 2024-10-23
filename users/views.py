@@ -3,9 +3,10 @@ from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views import generic
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.urls import reverse_lazy
-
+from .forms import EditProfileForm, PasswordChangedForm
+from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
 def user_login(request):
     if request.method == "POST":
@@ -35,3 +36,12 @@ def logout_user(request):
   logout(request)
   messages.success(request, ('Logout Successful'))
   return redirect('index')
+class user_edit(generic.UpdateView):
+  form_class = EditProfileForm
+  template_name = 'authenticate/edit_profile.html'
+  success_url = reverse_lazy('index')
+  def get_object(self):
+    return self.request.user
+class PasswordsChangeView(PasswordChangeView):
+  form_class = PasswordChangedForm
+  success_url = reverse_lazy('user_edit')
