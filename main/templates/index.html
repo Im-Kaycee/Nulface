@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nulface{% endblock %}</title>
+    <link rel="stylesheet" href = "{% static 'style.css' %}">
+</head>
+<body class="index_body">
+  {% block content %}
+  <nav class="navbar">
+    <a href="/">
+        <img src="{% static 'images/logo1-white.svg' %}" alt="Brand Logo" class="logo">
+    </a>
+
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links">
+        {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="{% url 'user_edit' %}">Profile</a></li>
+            {% if user.is_authenticated and user.is_staff %}
+            <li><a href="/admin">Dashboard</a></li>
+            {% endif %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
+    {% if messages %}  
+      {% for message in messages %}
+         <!-- Success Alert -->
+         <div class="alert alert-success" id="custom-alert">
+         <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+         {{message}}
+         </div>
+       
+      {% endfor %}
+    {% endif %}
+    <section class="hero">
+      <div class="hero-header">
+        <div class="left-hero" style="width: 40%;">
+          <h1 class="text" style="font-size: 40px;">Welcome to Nulface</h1>
+          <h2 class="text">I am the Nulface Designer</h2>
+          <h3 class="text">Welcome to a space where networking, graphic design, UI/UX, and cybersecurity converge. Whether you're exploring the intricacies of internet protocols or crafting engaging user interfaces, this blog offers insights, tips, and resources to fuel your passion and elevate your skills.</h3>
+        </div>
+       <!--<div class="right-hero" style="width: 40%;">
+          <img src="{% static 'images/bg3.png' %}" >
+        </div>
+      </div>--> 
+      
+       
+      <div class="card-container">
+          <div class="card" id="blog-card">
+            <div class="image"></div>
+            <!--<img src="{% static 'images/blog.jpg' %}"> -->
+            <div class="card-content">
+              <h3>Blog</h3>
+              <div class="card-details">
+                <p>Read about my opinions and experiences
+                  New posts every Friday</p>
+                  {% if user.is_authenticated %}
+                    <a href="/blog" class="btn">Read More</a>
+                  {% else %}
+                    <a href="/" class="btn">Login Please</a>
+                  {% endif %}
+              </div>
+              
+            </div>
+          </div>
+          <div class="card" id="profile-card">
+            <div class="image"></div>
+            <!--<img src="{% static 'images/49c5f0ad4b308939ea921e50b67deec9.jpg' %}"> -->
+            <div class="card-content">
+              <h3>Profile</h3>
+              <div class="card-details">
+                <p>Check out your reading statistics, change your account details and check your
+                  saved posts
+                  </p>
+                  <a href="" class="btn">Visit Page</a>
+              </div>
+              
+            </div>
+          </div>
+          <div class="card" id="contact-card">
+            <div class="image"></div>
+            <!--<img src="{% static 'images/49c5f0ad4b308939ea921e50b67deec9.jpg' %}"> -->
+            <div class="card-content">
+              <h3>Contact</h3>
+              <div class="card-details">
+                <p>Contact me for suggestions, complaints or collaborations</p>
+                  <a href="" class="btn">Visit Page</a>
+              </div>
+              
+            </div>
+          </div>
+      </div>
+    
+    </section>
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="footer-logo">
+              <img src="{% static 'images/logo1-white.svg' %}" alt="Logo">
+          </div>
+          <div class="footer-links">
+              <a href="#">Home</a>
+              <a href="#">Blog</a>
+              <a href="#">Contact</a>
+          </div>
+          <div class="footer-socials">
+              <a href="#"><img src="{% static 'images/twitter.png' %}" alt="X"></a>
+              <a href="#"><img src="{% static 'images/linkedin.png' %}" alt="LinkedIn"></a>
+              <a href="#"><img src="{% static 'images/medium.png' %}" alt="Medium"></a>
+          </div>
+      </div>
+  </footer>
+  <div class="loader"></div>
+{% endblock %}
+<script>
+  // Hide the alert after 5 seconds (5000 milliseconds)
+  setTimeout(function() {
+      var alert = document.getElementById('custom-alert');
+      if (alert) {
+          alert.style.display = 'none';
+      }
+  }, 3000);
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+
+  window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader-hidden");
+      loader.addEventListener("transitionend", () => {
+          document.body.removeChild(loader);
+      })
+  });
+
+</script>
+</body>
+</html>

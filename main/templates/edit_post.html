@@ -1,0 +1,20 @@
+{% extends 'blog.html' %}
+{% block title %}Post upload{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="width: 100px;
+            background-color: #1D3557;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;">Edit</button>
+    </form>
+{% else %}
+    <h1>Login Please</h1>
+{% endif %}
+<div class="loader"></div>
+{% endblock %}
