@@ -69,6 +69,7 @@
         background-color: #1D3557;
         width: 100%;
         text-align: center;
+        z-index: 1;
     }
 
     .nav-links.active {
@@ -267,4 +268,36 @@
     right: -21px;
     color: inherit;
   }
-  
+  .loader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccccd3;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+.loader-hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+.loader::after{
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: #1D3557;
+    border-radius: 50%;
+    animation: loading 0.75s linear infinite;
+}
+@keyframes loading{
+    from{
+        transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+}

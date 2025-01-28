@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-v6xro3ajou1q5da%v3)8s!7@+g(q&ms%7gh@z&x6hw5j+0fdm9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['*']
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'users',
     'ckeditor',
+    'whitenoise.runserver_nostatic',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,8 +82,15 @@ WSGI_APPLICATION = 'nulface.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER:': 'postgres',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': 'postgres.railway.internal',
+        'PORT': '5432',
+        
     }
 }
 
@@ -128,6 +137,7 @@ STATICFILES_DIRS = [
     BASE_DIR/'globalstaticfiles',
 
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
