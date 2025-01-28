@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v6xro3ajou1q5da%v3)8s!7@+g(q&ms%7gh@z&x6hw5j+0fdm9
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['nulface-production.up.railway.app', 'https://nulface-production.up.railway.app']
+ALLOWED_HOSTS = ['nulface-production.up.railway.app ', 'https://nulface-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://nulface-production.up.railway.app']
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
-        'USER:': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': 'postgres.railway.internal',
         'PORT': '5432',
