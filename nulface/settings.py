@@ -28,7 +28,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['nulface-production.up.railway.app', 'https://nulface-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['nulface-production.up.railway.app', 'https://nulface-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://nulface-production.up.railway.app']
 
 # Application definition
 
