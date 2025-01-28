@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-v6xro3ajou1q5da%v3)8s!7@+g(q&ms%7gh@z&x6hw5j+0fdm9
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = ['*']
+ALLOWED_HOSTS = ['nulface-production.up.railway.app', 'https://nulface-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['nulface-production.up.railway.app', 'https://nulface-production.up.railway.app']
 
 # Application definition
 
